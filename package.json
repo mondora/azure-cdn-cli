@@ -1,0 +1,49 @@
+{
+  "name": "@mondora/azure-cdn-cli",
+  "version": "0.1.0",
+  "description": "A simple CLI wrapper around deploy-azure-cdn to facilitate CI pipelines",
+  "main": "dist/index.js",
+  "bin": {
+    "azure-cdn-cli": "dist/bin/cli.js"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist ./coverage",
+    "prebuild": "yarn clean",
+    "build": "cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore spec.js,test.js,setupTests.js --presets=@babel/env",
+    "lint": "eslint src --ext .js",
+    "release": "standard-version",
+    "prepare": "yarn lint && yarn build"
+  },
+  "keywords": [
+    "azure",
+    "storage-account",
+    "cdn",
+    "deploy"
+  ],
+  "author": "manuel.serra@mondora.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^3.3.0",
+    "husky": "^1.3.1",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "standard-version": "^4.4.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "caporal": "^1.2.0",
+    "colors": "^1.3.3",
+    "deploy-azure-cdn": "^2.1.0",
+    "glob": "^7.1.4",
+    "glob-promise": "^3.4.0",
+    "ora": "^3.4.0"
+  }
+}

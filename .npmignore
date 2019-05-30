@@ -1,0 +1,13 @@
+# testing
+**/*.test.js
+
+# configuration
+.babelrc
+.eslintrc
+.gitignore
+.huskyrc
+.prettierrc
+commitlint.config.js
+
+# ci/cd
+bitbucket-pipelines.yml

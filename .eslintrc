@@ -1,0 +1,17 @@
+{
+  "extends": "prettier",
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "no-restricted-imports": ["error", { "patterns": ["*\\.*[a-z]", "!*.json"] }],
+    "no-unused-vars": ["error", { "args": "after-used", "varsIgnorePattern": "React" }],
+    "no-useless-escape": ["warn"],
+    "no-var": ["error"],
+    "prefer-arrow-callback": ["error"],
+    "prefer-template": ["error"],
+    "strict": ["error", "never"]
+  }
+}
