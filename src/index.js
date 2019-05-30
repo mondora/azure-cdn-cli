@@ -13,23 +13,11 @@ import deploy from "deploy-azure-cdn";
 
 import { version } from "../package";
 
-const isDir = option => {
-  try {
-    const stat = fs.lstatSync(option);
-    if (!stat.isDirectory()) {
-      throw new Error();
-    }
-  } catch (error) {
-    throw new Error(`The provided option "${option}" is not a valid directory`);
-  }
-  return option;
-};
-
 export const run = () => {
   prog
     .version(version)
     .command("deploy", "Deploy a static SPA application")
-    .argument("<app>", "App directory to deploy", opt => isDir(opt))
+    .option("--dir <directory>", "App directory to deploy", prog.STRING, "./build", false)
     .option("--container <name>", "Container name", prog.STRING, "$root", false)
     .option("--folder <name>", "Folder name", prog.STRING, "")
     .option("--options <json>", "Container options as a stringified JSON", prog.STRING)
@@ -60,10 +48,10 @@ export const run = () => {
         };
       }
 
-      const matches = await glob(`${args.app}/**/*`);
+      const matches = await glob(`${options.dir}/**/*`);
       const fileList = matches.filter(x => fs.lstatSync(x).isFile());
       const files = fileList.map(file => ({
-        base: args.app,
+        base: options.dir,
         path: path.resolve(process.cwd(), file)
       }));
 
@@ -72,7 +60,7 @@ export const run = () => {
   ┃          Azure CDN deploy CLI tool          ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
   `)}
-  ${colors.green("Application directory:")}   ${args.app}
+  ${colors.green("Application directory:")}   ${options.dir}
   ${colors.green("Container name:")}          ${options.container}
   ${colors.green("Container options:")}       ${JSON.stringify(options.options || "")}
   ${colors.green("Folder:")}                  ${options.folder}
