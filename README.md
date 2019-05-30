@@ -10,7 +10,7 @@ This CLI use `azure-storage` under the hood so an
 ## Example
 
 ```bash
-azure-cdn-cli deploy ./build --test --static
+azure-cdn-cli --test --static deploy
 ```
 
 ![Help screenshot](./screenshot.png)
