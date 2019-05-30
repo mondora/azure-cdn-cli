@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "A simple CLI wrapper around deploy-azure-cdn to facilitate CI pipelines",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mondora/azure-cdn-cli.git"
+  },
   "bin": {
     "azure-cdn-cli": "dist/bin/cli.js"
   },
