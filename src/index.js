@@ -21,7 +21,6 @@ export const run = () => {
     .option("--container <name>", "Container name", prog.STRING, "$root", false)
     .option("--folder <name>", "Folder name", prog.STRING, "")
     .option("--options <json>", "Container options as a stringified JSON", prog.STRING)
-    .option("--prefix <name>", "Prefix for all blobs", prog.STRING)
     .option(
       "--metadata <json>",
       `Container creation options (ex. "{ cacheControl: 'public, max-age=31556926' }"`,
