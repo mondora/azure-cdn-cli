@@ -37,7 +37,6 @@ export const run = () => {
         options = {
           ...options,
           container: "$web",
-          erase: true,
           options: {
             publicAccessLevel: "blob"
           },
