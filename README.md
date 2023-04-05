@@ -1,3 +1,15 @@
+# ⚠️ Deprecation notice: this package is not updated anymore ⚠️
+
+You can replace any automated job with [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) directly with:
+
+```bash
+# Delete the previous deployed artifacts
+> az storage azcopy blob delete -c "\$web" --recursive
+
+# Deploy the new ones
+> az storage azcopy blob upload -c "\$web" -s "<artifact-dir>/*" --recursive
+```
+
 # azure-cdn-cli
 
 Utility CLI to deploy webapps to
